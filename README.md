@@ -18,7 +18,8 @@ Test the setup: Once you have the program or script set up, you can test the com
 To do this, you can use a library such as pyserial that provides an interface for accessing serial ports in Python.
 
 
-## combine API with a 4800 baud python serial terminal
+## code I provided in my previous answer is for sending input text to the OpenAI API and receiving output text from the API. It does not implement two-way communication over the API using a serial connection. now MINT can make request to openAI 
+ ## combine API with a 4800 baud python serial terminal
 Here is an example of a Python script that implements both step 3 from the previous answer and a 4800 baud serial terminal using the pyserial library:
 
 ```
@@ -72,5 +73,7 @@ while True:
 ser.close()
 ```
 
-now openAI can talk to MINT and learn form it and code it
+
+
+
 
