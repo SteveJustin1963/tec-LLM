@@ -14,66 +14,18 @@ Connect the serial terminal app to the API: You will need to write a program or 
 
 Test the setup: Once you have the program or script set up, you can test the communication between the serial terminal app and the OpenAI API by sending input text to the API and checking the output text in the serial terminal app.
 
-## Python script to communicate with a serial terminal at a baud rate of 4800. 
-To do this, you can use a library such as pyserial that provides an interface for accessing serial ports in Python.
+## Python script for sending input text to the OpenAI API and receiving output text from the API only
+- `APIT-1way.py`
+- to communicate with a serial terminal at a baud rate of 4800. 
+- use a library such as pyserial that provides an interface for accessing serial ports in Python.
 
 
-## code I provided in my previous answer is for sending input text to the OpenAI API and receiving output text from the API. It does not implement two-way communication over the API using a serial connection. now MINT can make request to openAI 
- ## combine API with a 4800 baud python serial terminal
-Here is an example of a Python script that implements both step 3 from the previous answer and a 4800 baud serial terminal using the pyserial library:
-
-```
-import requests
-import serial
-
-# Replace YOUR_API_KEY with your actual API key
-API_KEY = "YOUR_API_KEY"
-
-# Endpoint for the OpenAI API
-API_ENDPOINT = "https://api.openai.com/v1/engines/text-davinci-002/jobs"
-
-def generate_text(prompt):
-    # Define the request data
-    data = {
-        "prompt": prompt,
-        "max_tokens": 100,
-        "temperature": 0.5,
-    }
-
-    # Send a post request to the API endpoint
-    response = requests.post(
-        API_ENDPOINT,
-        headers={
-            "Content-Type": "application/json",
-            "Authorization": f"Bearer {API_KEY}",
-        },
-        json=data,
-    )
-
-    # Check if the request was successful
-    if response.status_code != 200:
-        raise ValueError("Failed to generate text")
-
-    # Return the generated text
-    return response.json()["choices"][0]["text"]
-
-# Open the serial port
-ser = serial.Serial("/dev/ttyUSB0", baudrate=4800, timeout=1)
-
-while True:
-    # Read data from the serial port
-    data = ser.readline().strip().decode("utf-8")
-
-    # Generate text using the OpenAI API
-    generated_text = generate_text(data)
-
-    # Write the generated text to the serial port
-    ser.write(generated_text.encode("utf-8"))
-
-ser.close()
-```
-
-
-
-
+## Python script for two-way communication over the API using a serial connection. 
+- `APIT-2way.py`
+- This code uses a while loop to continuously read input from the serial port, 
+- send it to the OpenAI API using the generate_text function, 
+- and write the output back to the serial port. 
+- The ser.readline() method is used to read a line of text from the serial port, 
+- and the ser.write method is used to write a line of text to the serial port. 
+- The input and output text is encoded and decoded as necessary to work with the serial connection.
 
