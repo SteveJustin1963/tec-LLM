@@ -1,5 +1,4 @@
-# tec-MINT-2-OpenAI
-python serial terminal with openAI API link, so AI can talk to MINT running on a TEC-1
+# python serial terminal with openAI API link, so AI can talk to MINT running on a TEC-1
 
 
 The OpenAI API is a cloud-based service that allows developers to access the capabilities of the OpenAI language models, including ChatGPT. The API provides a simple interface for sending input text and receiving predicted output text in real-time. The API can be integrated into a variety of applications and services, such as chatbots, language translation systems, and more. The API offers several customization options, such as controlling the length of the output and setting specific parameters for the language model's behavior. Access to the API is typically provided through API keys and usage is charged based on the amount of API requests made.
